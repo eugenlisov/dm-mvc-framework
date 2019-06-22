@@ -95,7 +95,7 @@ abstract class Model {
             // print_r( $post );
             // echo '</pre>';
 
-            $return[$post -> id] = $post;
+            $return[] = $post;
         }
 
         return $return;
