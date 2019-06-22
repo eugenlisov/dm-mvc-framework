@@ -1,19 +1,14 @@
-"name": "eugenlisov/dm-mvc-framework",
-"type": "library",
-"description": "A simple MVC framework for making interacting with Custom Fields as easy as it is in Laravel",
-"keywords": ["MVC","PHP","WordPress","Custo Fields"],
-"homepage": "https://github.com/eugenlisov/dm-mvc-framework",
-"license": "MIT",
-"authors": [
-    {
-        "name": "EugenLisov",
-        "email": "eugen.lisov@gmail.com",
-        "role": "Developer"
+{
+    "name": "eugenlisov/dm-mvc-frameworky",
+    "version": "1.0",
+    "description": "A simple MVC framework for making interacting with Custom Fields as easy as it is in Laravel",
+    "keywords": ["MVC","PHP","WordPress","Custo Fields"],
+    "homepage": "https://github.com/eugenlisov/dm-mvc-framework",
+    "license": "MIT",
+    "dist": {
+        "url": "https://github.com/eugenlisov/dm-mvc-framework",
+        "type": "zip"
     }
-],
-"minimum-stability": "stable",
- "require": {
-    "php": ">=5.3.0"
 },
 {
     "autoload": {
