@@ -1,5 +1,5 @@
 {
-    "name": "eugenlisov/dm-mvc-frameworky",
+    "name": "eugenlisov/dm-mvc-framework",
     "version": "1.0",
     "description": "A simple MVC framework for making interacting with Custom Fields as easy as it is in Laravel",
     "keywords": ["MVC","PHP","WordPress","Custo Fields"],
