@@ -65,7 +65,7 @@ abstract class Model {
 
 
         // $this -> filter_line_breaks();
-        $this -> extract_image();
+        // $this -> extract_image();
     }
 
 
@@ -187,7 +187,7 @@ abstract class Model {
 
         if ( empty( $data ) ) return [];
 
-        $query = \DM_PRW\Models\Query::new( static::$post_type );
+        $query = Query::new( static::$post_type );
 
         foreach ($data as $property => $value) {
             $query -> where( $property, $value );
@@ -208,7 +208,7 @@ abstract class Model {
 
         if ( empty( $data ) ) return [];
 
-        $query = \DM_PRW\Models\Query::new( static::$post_type )
+        $query = Query::new( static::$post_type )
                 -> take(1);
 
         foreach ($data as $property => $value) {
@@ -326,40 +326,40 @@ abstract class Model {
      * Filters through the Array ob onjects returned by ACF and extracts just the size we need.
      * @return [type] [description]
      */
-    private function extract_image() {
+    // private function extract_image() {
+    //
+    //     if ( empty( $this -> image ) ) {
+    //         $this -> image_url = 'https://apps.devmaverick.com/prw/wp-content/uploads/2019/05/orange-person.png';
+    //         return;
+    //     }
+    //
+    //     $this -> image_url = $this -> get_thumb_url( 'main_thumb' );
+    //
+    // }
 
-        if ( empty( $this -> image ) ) {
-            $this -> image_url = 'https://apps.devmaverick.com/prw/wp-content/uploads/2019/05/orange-person.png';
-            return;
-        }
-
-        $this -> image_url = $this -> get_thumb_url( 'main_thumb' );
-
-    }
-
-    public function get_thumb_url( $size = '' ) {
-
-        // TODO: grab this from a setting.
-        if ( empty( $this -> image ) ) {
-            return 'https://apps.devmaverick.com/prw/wp-content/uploads/2019/05/orange-person.png';
-        }
-
-        // Allowed values:
-        $allowed_values = [
-            'user_dropdown',
-            'working_with_widget',
-            'main_thumb',
-            'messenger',
-        ];
-
-        if ( ! in_array( $size, $allowed_values ) ) return 'https://apps.devmaverick.com/prw/wp-content/uploads/2019/05/orange-person.png';
-
-        // The full thumbnail size is defined with 'dm_thumb_' in the front.
-        $full_thumb_size = 'dm_thumb_' . $size;
-
-        return wp_get_attachment_image_src( $this -> image, $full_thumb_size )[0];
-
-    }
+    // public function get_thumb_url( $size = '' ) {
+    //
+    //     // TODO: grab this from a setting.
+    //     if ( empty( $this -> image ) ) {
+    //         return 'https://apps.devmaverick.com/prw/wp-content/uploads/2019/05/orange-person.png';
+    //     }
+    //
+    //     // Allowed values:
+    //     $allowed_values = [
+    //         'user_dropdown',
+    //         'working_with_widget',
+    //         'main_thumb',
+    //         'messenger',
+    //     ];
+    //
+    //     if ( ! in_array( $size, $allowed_values ) ) return 'https://apps.devmaverick.com/prw/wp-content/uploads/2019/05/orange-person.png';
+    //
+    //     // The full thumbnail size is defined with 'dm_thumb_' in the front.
+    //     $full_thumb_size = 'dm_thumb_' . $size;
+    //
+    //     return wp_get_attachment_image_src( $this -> image, $full_thumb_size )[0];
+    //
+    // }
 
 
     /**
@@ -468,7 +468,7 @@ abstract class Model {
     }
 
 
-    public static function get( \DM_PRW\Models\QueryAbstract $query ) {
+    public static function get( QueryAbstract $query ) {
 
         // $query -> build(); // This is for the Query Classic
 
