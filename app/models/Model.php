@@ -152,8 +152,6 @@ abstract class Model {
         }
 
 
-        // Populate some special properties;
-        $this -> session_id = DM_PRW_SESSION_ID; // NOTE: only needed on Client Info Page.
 
     }
 
@@ -287,10 +285,6 @@ abstract class Model {
         $meta = [];
         $raw_meta = get_post_meta( $this -> id, '', true );
 
-        // echo '<pre>';
-        // print_r( $raw_meta );
-        // echo '</pre>';
-
         if ( empty( $raw_meta ) ) return;
 
         foreach ($raw_meta as $key => $item) {
@@ -320,46 +314,6 @@ abstract class Model {
         }
 
     }
-
-
-    /**
-     * Filters through the Array ob onjects returned by ACF and extracts just the size we need.
-     * @return [type] [description]
-     */
-    // private function extract_image() {
-    //
-    //     if ( empty( $this -> image ) ) {
-    //         $this -> image_url = 'https://apps.devmaverick.com/prw/wp-content/uploads/2019/05/orange-person.png';
-    //         return;
-    //     }
-    //
-    //     $this -> image_url = $this -> get_thumb_url( 'main_thumb' );
-    //
-    // }
-
-    // public function get_thumb_url( $size = '' ) {
-    //
-    //     // TODO: grab this from a setting.
-    //     if ( empty( $this -> image ) ) {
-    //         return 'https://apps.devmaverick.com/prw/wp-content/uploads/2019/05/orange-person.png';
-    //     }
-    //
-    //     // Allowed values:
-    //     $allowed_values = [
-    //         'user_dropdown',
-    //         'working_with_widget',
-    //         'main_thumb',
-    //         'messenger',
-    //     ];
-    //
-    //     if ( ! in_array( $size, $allowed_values ) ) return 'https://apps.devmaverick.com/prw/wp-content/uploads/2019/05/orange-person.png';
-    //
-    //     // The full thumbnail size is defined with 'dm_thumb_' in the front.
-    //     $full_thumb_size = 'dm_thumb_' . $size;
-    //
-    //     return wp_get_attachment_image_src( $this -> image, $full_thumb_size )[0];
-    //
-    // }
 
 
     /**
