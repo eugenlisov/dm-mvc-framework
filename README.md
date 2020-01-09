@@ -10,3 +10,10 @@ TODO: Abstractize here the folowing
 - Mailer
 
 Another change that does nothing.
+
+
+
+
+## Pushing to Packagist
+- git tag 1.**
+- git push --tags
