@@ -17,3 +17,12 @@ Another change that does nothing.
 ## Pushing to Packagist
 - git tag 1.**
 - git push --tags
+
+
+
+## Currenctly used by:
+- DM CRM Plugin
+- 2Seas Catalog
+- Rebate (original, not included)
+- DM Go Portals
+- PRW (modified clone, not included)
