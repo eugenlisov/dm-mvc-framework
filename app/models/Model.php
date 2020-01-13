@@ -25,9 +25,6 @@ abstract class Model {
     public function __construct( $post = '', $autoload = false) {
 
         if ( ! isset( $post ) || empty( $post ) ) return;
-        // echo '<pre>';
-        // print_r( $post );
-        // echo '</pre>';
 
         if ( is_a( $post, 'WP_Post' ) ) {
             $this -> id = $post -> ID;
@@ -37,14 +34,6 @@ abstract class Model {
             $post = get_post( $post );
         }
 
-        // if ( $post -> ID == 540 ) {
-        //     echo '<pre>';
-        //     print_r( $this );
-        //     echo '</pre>';
-        // }
-
-
-
         if ( empty( $post ) ) return; // NOTE: Not sure in which situations, the POST is empty.
 
         if ( $post ) {
@@ -53,19 +42,11 @@ abstract class Model {
 
         $this -> post_date_gmt = $post -> post_date_gmt;
 
-        // echo '<pre>Post:';
-        // var_dump( $post );
-        // echo '</pre>';
-
         $this -> extract_meta_properties();
         $this -> filter_boolean_fields();
 
         $this -> initialize_array_properties();
         $this -> filter_multiline_fields();
-
-
-        // $this -> filter_line_breaks();
-        // $this -> extract_image();
     }
 
 
@@ -91,10 +72,6 @@ abstract class Model {
 
             $post = new static( $post, $autoload );
 
-            // echo '<pre>';
-            // print_r( $post );
-            // echo '</pre>';
-
             $return[] = $post;
         }
 
@@ -110,10 +87,6 @@ abstract class Model {
         $post = static::find($post_id);
         $post -> populate_fillables( $data );
         $post -> save();
-
-        // echo '<pre>The Data';
-        // print_r( $post );
-        // echo '</pre>';
 
         return $post;
 
@@ -134,9 +107,6 @@ abstract class Model {
         return $post_id;
 
     }
-
-
-
 
 
     /**
@@ -238,9 +208,6 @@ abstract class Model {
 
                 update_post_meta( $this -> id, $custom_field_name, $this -> $property );
 
-                // echo 'Meta: ' .$custom_field_name . '<br />';
-                // echo 'Probably saved the meta fields';
-                // $this -> $property = $data[$property];
             }
         }
 
@@ -253,9 +220,6 @@ abstract class Model {
 
                 update_post_meta( $this -> id, $custom_field_name, $this -> $property );
 
-                // echo 'Meta: ' .$custom_field_name . '<br />';
-                // echo 'Probably saved the meta fields';
-                // $this -> $property = $data[$property];
             }
         }
 
@@ -334,7 +298,7 @@ abstract class Model {
                     $this -> $property = false;
                 }
 
-            } // End foreach
+            }
 
     }
 
@@ -351,7 +315,7 @@ abstract class Model {
                     $this -> $property = false;
                 }
 
-            } // End foreach
+            }
 
     }
 
@@ -364,9 +328,7 @@ abstract class Model {
 
             $this -> $property = $this -> clean_multiline( $this -> $property );
 
-            // echo $this -> $property . '<br />';
-
-        } // End foreach
+        } 
 
     }
 
@@ -375,12 +337,6 @@ abstract class Model {
 
         $full_string = explode( PHP_EOL, $string );
         $clean_string = [];
-
-        // foreach ($full_string as $key => $line) {
-        //     if ( trim( $line ) == '' ) unset( $full_string[$key] );
-        // }
-
-
 
         foreach ($full_string as $key => $paragraph) {
             $line = trim( $paragraph );
@@ -391,10 +347,6 @@ abstract class Model {
             }
 
         }
-
-        // echo '<pre>';
-        // print_r( $clean_string );
-        // echo '</pre>';
 
         return implode( "<br />", $clean_string );
 
@@ -429,16 +381,11 @@ abstract class Model {
 
         // For QueryClassic, if post__in is empty return an empty array. Otherwise, the Model will return all the posts.
         $class_name = get_class( $query );
-        if ( $class_name == 'DM_PRW\Models\QueryClassic' ) {
+        if ( $class_name == 'DM_PRW\Models\QueryClassic' ) { // TODO: This should reflect a dependency in the current repo
             if ( !isset( $query -> post__in ) || empty( $query -> post__in ) ) return [];
         }
 
         $args = (array)$query;
-
-        // echo '<pre>';
-        // print_r( $args );
-        // echo '</pre>';
-
 
         $posts = get_posts( $args );
 
