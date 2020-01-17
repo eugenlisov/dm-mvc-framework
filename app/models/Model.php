@@ -1,8 +1,5 @@
 <?php
-/**
- * Model v.1.1
- * @var [type]
- */
+
 namespace DM_MVC\Models;
 
 abstract class Model {
@@ -229,11 +226,18 @@ abstract class Model {
 
     /**
      * Returns the current model with the ID
-     * @param  [type] $id [description]
+     * @param  Int | Array $id   An ID or an array of IDs
      * @return [type]     [description]
      */
-    public static function find( $id ) {
-        return new static( $id );
+    public static function find( $id_single_or_array ) {
+        if ( is_array( $id_single_or_array ) ) {
+            $return = [];
+            foreach ($id_single_or_array as $key => $single_id ) {
+                $return[] = new static( $single_id );
+            }
+            return $return;
+        }
+        return new static( $id_single_or_array );
     }
 
 
