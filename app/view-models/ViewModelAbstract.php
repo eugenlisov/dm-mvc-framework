@@ -11,6 +11,7 @@ abstract class ViewModelAbstract {
     protected static $field_groups = [
         'standard' => ['id'],
     ];
+    protected static $processed_fields_map = []; // Will always asume that for a 'field' we have a protected 'set_field' method.
     
 
     public function __construct( Model $record = null ) {
@@ -27,6 +28,7 @@ abstract class ViewModelAbstract {
         }
 
         $this -> set_speciffic_properties();
+        $this -> set_processed_fields();
         unset( $this -> record );
         unset( $this -> just_properties );
         return $this;
@@ -78,6 +80,27 @@ abstract class ViewModelAbstract {
 
         return static::$field_groups[$fields_data];
 
+    }
+
+
+
+    /**
+     * Initializes every property set in the 
+     */
+    protected function set_processed_fields() {
+
+        if ( empty( static::$processed_fields_map ) ) return;
+        $fields = static::$processed_fields_map;
+
+        foreach ($fields as $key => $field) {
+            if ( ! in_array( $field, $this -> just_properties ) ) continue; // Don't initialize this if the user hasn't requested this prop.
+            
+            $method_name = 'set_' . $field;
+            $method_exits = method_exists($this, $method_name);
+            if ( ! $method_exits ) continue;
+
+            $this -> $field = $this -> $method_name();
+        }
     }
 
 
