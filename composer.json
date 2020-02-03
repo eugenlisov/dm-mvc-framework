@@ -1,6 +1,6 @@
 {
     "name": "eugenlisov/dm-mvc-framework",
-    "version": "1.08",
+    "version": "1.09",
     "minimum-stability": "dev",
     "description": "A simple MVC framework for making interacting with Custom Fields as easy as it is in Laravel",
     "keywords": ["MVC","PHP","WordPress","Custom Fields"],
