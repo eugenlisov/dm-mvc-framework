@@ -25,4 +25,4 @@ Another change that does nothing.
 - 2Seas Catalog
 - Rebate (original, not included)
 - DM Go Portals
-- PRW (modified clone, not included)
+- PRW - Partially, only the presenter. Prw uses much of the original Model 

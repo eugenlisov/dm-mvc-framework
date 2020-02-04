@@ -14,7 +14,7 @@ abstract class PresenterAbstract {
     protected static $processed_fields_map = []; // Will always asume that for a 'field' we have a protected 'set_field' method.
     
 
-    public function __construct( Model $record = null ) {
+    public function __construct( $record = null ) {
         $this -> record = $record;
     }
 
@@ -59,7 +59,7 @@ abstract class PresenterAbstract {
     }
 
 
-    private static function initialize( Model $record, $fields = [] ) {
+    private static function initialize( $record, $fields = [] ) {
         return ( new static( $record ) ) -> with( $fields );
     }
 

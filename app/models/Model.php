@@ -337,7 +337,7 @@ abstract class Model {
     }
 
 
-    protected function clean_multiline( $string ) {
+    public function clean_multiline( $string ) {
 
         $full_string = explode( PHP_EOL, $string );
         $clean_string = [];
