@@ -31,7 +31,7 @@ abstract class PresenterAbstract {
         $this -> set_processed_fields();
         unset( $this -> record );
         unset( $this -> just_properties );
-        return $this;
+        return (array)$this;
 
     }
 
